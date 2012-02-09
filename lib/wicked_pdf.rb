@@ -130,7 +130,8 @@ class WickedPdf
 
     def parse_others(options)
       unless options.blank?
-        r = make_options(options, [ :orientation,
+        r = make_options(options, [ :window_status,
+                                    :orientation,
                                     :page_size,
                                     :page_width,
                                     :page_height,
@@ -141,7 +142,8 @@ class WickedPdf
                                     :dpi,
                                     :encoding,
                                     :user_style_sheet])
-        r +=make_options(options, [ :redirect_delay,
+        r +=make_options(options, [ :javascript_delay,
+                                    :redirect_delay,
                                     :zoom,
                                     :page_offset], "", :numeric)
         r +=make_options(options, [ :book,
