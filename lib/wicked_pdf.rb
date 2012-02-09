@@ -24,7 +24,14 @@ class WickedPdf
   end
 
   def pdf_from_string(string, options={})
+    use_xserver = options.delete :use_xserver
+
     command = "\"#{@exe_path}\" #{parse_options(options)} -q - - " # -q for no errors on stdout
+
+    if use_xserver
+      command = "xvfb-run -a -s \"-screen 0 640x480x16\" #{command}"
+    end
+
     p "*"*15 + command + "*"*15 unless defined?(Rails) and Rails.env != 'development'
     pdf, err = Open3.popen3(command) do |stdin, stdout, stderr|
       stdin.binmode
