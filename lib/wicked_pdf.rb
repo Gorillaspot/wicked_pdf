@@ -150,6 +150,7 @@ class WickedPdf
                                     :encoding,
                                     :user_style_sheet])
         r +=make_options(options, [ :javascript_delay,
+                                    :window_status_timeout,
                                     :redirect_delay,
                                     :zoom,
                                     :page_offset], "", :numeric)
