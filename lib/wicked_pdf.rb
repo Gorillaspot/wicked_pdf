@@ -32,7 +32,7 @@ class WickedPdf
       command = "xvfb-run -a -s \"-screen 0 640x480x16\" #{command}"
     end
 
-    p "*"*15 + command + "*"*15 unless defined?(Rails) and Rails.env != 'development'
+    p "*"*15 + command + "*"*15 if defined?(Rails) and Rails.env != 'development'
     pdf, err = Open3.popen3(command) do |stdin, stdout, stderr|
       stdin.binmode
       stdout.binmode
